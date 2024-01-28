@@ -6,10 +6,16 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     public GameObject[] menuParts;
+    public static MenuManager menuManager;
     // Start is called before the first frame update
     void Start()
     {
-
+        if (menuManager != null)
+            Destroy(this);
+        else
+        {
+            menuManager = this;
+        }
     }
     public void DeactivateAll()
     {
@@ -20,7 +26,7 @@ public class MenuManager : MonoBehaviour
     }
     public void Activate(GameObject gameObject)
     {
-        DeactivateAll();
+
         gameObject.SetActive(true);
     }
 
